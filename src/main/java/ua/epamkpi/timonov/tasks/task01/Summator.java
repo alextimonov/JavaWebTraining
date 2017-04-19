@@ -4,6 +4,7 @@ package ua.epamkpi.timonov.tasks.task01;
  * Represents adding two matrices
  */
 public class Summator {
+
     public static final String MATRICES_SHOULD_NOT_BE_NULL = "Matrices should not be null";
     public static final String SIZES_SHOULD_BE_POSITIVE = "Matrix's sizes should be positive";
     public static final String MATRICES_HAVE_DIFFERENT_SIZES = "Matrices have different sizes";

@@ -4,12 +4,13 @@ package ua.epamkpi.timonov.tasks.task01;
  * Represents two-dimensional matrix
  */
 public class Matrix {
+
     public static final String INDEXES_SHOULD_BE_POSITIVE = "Element indexes should be positive";
+    public static final String MATRIX_SIZES_SHOULD_BE_POSITIVE = "Matrix sizes should be positive";
     public static final String ROW_SHOULD_BE_LESS_THAN_VERTICAL_SIZE =
             "Row should be less than matrix's vertical size";
     public static final String COLUMN_SHOULD_BE_LESS_THAN_HORIZONTAL_SIZE =
             "Column should be less than matrix's horizontal size";
-    public static final String MATRIX_SIZES_SHOULD_BE_POSITIVE = "Matrix sizes should be positive";
 
     /* array with matrix's elements */
     private int[][] array;
