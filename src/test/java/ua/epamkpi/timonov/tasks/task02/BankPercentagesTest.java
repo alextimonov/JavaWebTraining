@@ -121,37 +121,37 @@ public class BankPercentagesTest {
         assertEquals(0, bankPercentages.findTermForLoopWithReturn(1100, 1000, 5));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testFindTermWhileDoBoundary03() throws Exception {
-        assertEquals(0, bankPercentages.findTermWhileDoLoop(1000, 1000, 0));
-        assertEquals(0, bankPercentages.findTermDoWhileLoop(1000, 1000, 0));
-        assertEquals(0, bankPercentages.findTermForLoop(1000, 1000, 0));
+        assertEquals(-1, bankPercentages.findTermWhileDoLoop(1000, 1000, 0));
+        assertEquals(-1, bankPercentages.findTermDoWhileLoop(1000, 1000, 0));
+        assertEquals(-1, bankPercentages.findTermForLoop(1000, 1000, 0));
 
-        assertEquals(0, bankPercentages.findTermWhileDoLoopWithBreak(1000, 1000, 0));
-        assertEquals(0, bankPercentages.findTermDoWhileLoopWithBreak(1000, 1000, 0));
-        assertEquals(0, bankPercentages.findTermForLoopWithBreak(1000, 1000, 0));
+        assertEquals(-1, bankPercentages.findTermWhileDoLoopWithBreak(1000, 1000, 0));
+        assertEquals(-1, bankPercentages.findTermDoWhileLoopWithBreak(1000, 1000, 0));
+        assertEquals(-1, bankPercentages.findTermForLoopWithBreak(1000, 1000, 0));
 
-        assertEquals(0, bankPercentages.findTermWhileDoLoopWithBreakAndLabel(1000, 1000, 0));
-        assertEquals(0, bankPercentages.findTermDoWhileLoopWithBreakAndLabel(1000, 1000, 0));
-        assertEquals(0, bankPercentages.findTermForLoopWithBreakAndLabel(1000, 1000, 0));
+        assertEquals(-1, bankPercentages.findTermWhileDoLoopWithBreakAndLabel(1000, 1000, 0));
+        assertEquals(-1, bankPercentages.findTermDoWhileLoopWithBreakAndLabel(1000, 1000, 0));
+        assertEquals(-1, bankPercentages.findTermForLoopWithBreakAndLabel(1000, 1000, 0));
 
-        assertEquals(0, bankPercentages.findTermWhileDoLoopWithReturn(1000, 1000, 0));
-        assertEquals(0, bankPercentages.findTermDoWhileLoopWithReturn(1000, 1000, 0));
-        assertEquals(0, bankPercentages.findTermForLoopWithReturn(1000, 1000, 0));
+        assertEquals(-1, bankPercentages.findTermWhileDoLoopWithReturn(1000, 1000, 0));
+        assertEquals(-1, bankPercentages.findTermDoWhileLoopWithReturn(1000, 1000, 0));
+        assertEquals(-1, bankPercentages.findTermForLoopWithReturn(1000, 1000, 0));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testFindTermWhileDoAbnormal01() throws Exception {
-        bankPercentages.findTermWhileDoLoop(-100, 200, 10);
+        assertEquals(-1, bankPercentages.findTermWhileDoLoop(-100, 200, 10));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testFindTermWhileDoAbnormal02() throws Exception {
-        bankPercentages.findTermWhileDoLoop(100, -200, 10);
+        assertEquals(-1, bankPercentages.findTermWhileDoLoop(100, -200, 10));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testFindTermWhileDoAbnormal03() throws Exception {
-        bankPercentages.findTermWhileDoLoop(100, 200, -10);
+        assertEquals(-1, bankPercentages.findTermWhileDoLoop(100, 200, -10));
     }
 }

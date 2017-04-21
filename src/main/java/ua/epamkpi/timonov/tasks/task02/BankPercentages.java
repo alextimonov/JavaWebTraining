@@ -1,26 +1,43 @@
 package ua.epamkpi.timonov.tasks.task02;
 
+/**
+ * Represents search for years needed to get required sum if start sum is put to a bank at a percentage rate
+ */
 public class BankPercentages {
 
     public static final int HUNDRED = 100;
     public static final String REQUIRED_NUMBER_OF_YEARS = "Required number of years: ";
     public static final String ARGUMENTS_SHOULD_BE_POSITIVE = "Arguments should be positive";
+    public static final int NOT_VALID_ARGUMENTS = -1;
 
     public static void main(String[] args) {
-        try {
-            new BankPercentages().run();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+        new BankPercentages().run();
+    }
+
+    /**
+     * starts one of possible method to find number of years, prints the answer
+     */
+    private void run() {
+        int years = findTermForLoopWithSystemExit(1000, 2000, 5);
+        if (years >= 0) {
+            System.out.println(REQUIRED_NUMBER_OF_YEARS + years);
+        } else {
+            System.out.println(ARGUMENTS_SHOULD_BE_POSITIVE);
         }
     }
 
-    private void run() {
-        int years = findTermForLoopWithSystemExit(1000, 2000, 5);
-        System.out.println(REQUIRED_NUMBER_OF_YEARS + years);
-    }
-
+    /**
+     * finds years needed to get required sum if start sum is put to a bank at a percentage rate
+     * uses loop while... do
+     * @param startSum      start sum
+     * @param requiredSum   required sum
+     * @param percentage    annual interest rate
+     * @return              founded number of years or -1 if arguments are not valid (are not positive)
+     */
     public int findTermWhileDoLoop(double startSum, double requiredSum, double percentage) {
-        checkArguments(startSum, requiredSum, percentage);
+        if (!argumentsAreValid(startSum, requiredSum, percentage)) {
+            return NOT_VALID_ARGUMENTS;
+        }
         double ratio = (percentage + HUNDRED) / HUNDRED;
         int years = 0;
         while (startSum < requiredSum) {
@@ -30,8 +47,18 @@ public class BankPercentages {
         return years;
     }
 
+    /**
+     * finds years needed to get required sum if start sum is put to a bank at a percentage rate
+     * uses loop do... while
+     * @param startSum      start sum
+     * @param requiredSum   required sum
+     * @param percentage    annual interest rate
+     * @return              founded number of years or -1 if arguments are not valid (are not positive)
+     */
     public int findTermDoWhileLoop(double startSum, double requiredSum, double percentage) {
-        checkArguments(startSum, requiredSum, percentage);
+        if (!argumentsAreValid(startSum, requiredSum, percentage)) {
+            return NOT_VALID_ARGUMENTS;
+        }
         double ratio = (percentage + HUNDRED) / HUNDRED;
         if (startSum >= requiredSum) {
             return 0;
@@ -45,8 +72,18 @@ public class BankPercentages {
         return years;
     }
 
+    /**
+     * finds years needed to get required sum if start sum is put to a bank at a percentage rate
+     * uses loop for...
+     * @param startSum      start sum
+     * @param requiredSum   required sum
+     * @param percentage    annual interest rate
+     * @return              founded number of years or -1 if arguments are not valid (are not positive)
+     */
     public int findTermForLoop(double startSum, double requiredSum, double percentage) {
-        checkArguments(startSum, requiredSum, percentage);
+        if (!argumentsAreValid(startSum, requiredSum, percentage)) {
+            return NOT_VALID_ARGUMENTS;
+        }
         double ratio = (percentage + HUNDRED) / HUNDRED;
         int years = 0;
         for (double currentSum = startSum; currentSum < requiredSum; currentSum *= ratio, years++) {
@@ -55,7 +92,9 @@ public class BankPercentages {
     }
 
     public int findTermWhileDoLoopWithBreak(double startSum, double requiredSum, double percentage) {
-        checkArguments(startSum, requiredSum, percentage);
+        if (!argumentsAreValid(startSum, requiredSum, percentage)) {
+            return NOT_VALID_ARGUMENTS;
+        }
         double ratio = (percentage + HUNDRED) / HUNDRED;
         int years = 0;
         while (true) {
@@ -69,7 +108,9 @@ public class BankPercentages {
     }
 
     public int findTermDoWhileLoopWithBreak(double startSum, double requiredSum, double percentage) {
-        checkArguments(startSum, requiredSum, percentage);
+        if (!argumentsAreValid(startSum, requiredSum, percentage)) {
+            return NOT_VALID_ARGUMENTS;
+        }
         double ratio = (percentage + HUNDRED) / HUNDRED;
         if (startSum >= requiredSum) {
             return 0;
@@ -87,7 +128,9 @@ public class BankPercentages {
     }
 
     public int findTermForLoopWithBreak(double startSum, double requiredSum, double percentage) {
-        checkArguments(startSum, requiredSum, percentage);
+        if (!argumentsAreValid(startSum, requiredSum, percentage)) {
+            return NOT_VALID_ARGUMENTS;
+        }
         double ratio = (percentage + HUNDRED) / HUNDRED;
         int years = 0;
         for (double currentSum = startSum; ; currentSum *= ratio) {
@@ -100,7 +143,9 @@ public class BankPercentages {
     }
 
     public int findTermWhileDoLoopWithBreakAndLabel(double startSum, double requiredSum, double percentage) {
-        checkArguments(startSum, requiredSum, percentage);
+        if (!argumentsAreValid(startSum, requiredSum, percentage)) {
+            return NOT_VALID_ARGUMENTS;
+        }
         double ratio = (percentage + HUNDRED) / HUNDRED;
         int years = 0;
         label: while (true) {
@@ -114,7 +159,9 @@ public class BankPercentages {
     }
 
     public int findTermDoWhileLoopWithBreakAndLabel(double startSum, double requiredSum, double percentage) {
-        checkArguments(startSum, requiredSum, percentage);
+        if (!argumentsAreValid(startSum, requiredSum, percentage)) {
+            return NOT_VALID_ARGUMENTS;
+        }
         double ratio = (percentage + HUNDRED) / HUNDRED;
         if (startSum >= requiredSum) {
             return 0;
@@ -132,7 +179,9 @@ public class BankPercentages {
     }
 
     public int findTermForLoopWithBreakAndLabel(double startSum, double requiredSum, double percentage) {
-        checkArguments(startSum, requiredSum, percentage);
+        if (!argumentsAreValid(startSum, requiredSum, percentage)) {
+            return NOT_VALID_ARGUMENTS;
+        }
         double ratio = (percentage + HUNDRED) / HUNDRED;
         int years = 0;
         label: for (double currentSum = startSum; ; currentSum *= ratio) {
@@ -145,7 +194,9 @@ public class BankPercentages {
     }
 
     public int findTermWhileDoLoopWithReturn(double startSum, double requiredSum, double percentage) {
-        checkArguments(startSum, requiredSum, percentage);
+        if (!argumentsAreValid(startSum, requiredSum, percentage)) {
+            return NOT_VALID_ARGUMENTS;
+        }
         double ratio = (percentage + HUNDRED) / HUNDRED;
         int years = 0;
         while (true) {
@@ -158,7 +209,9 @@ public class BankPercentages {
     }
 
     public int findTermDoWhileLoopWithReturn(double startSum, double requiredSum, double percentage) {
-        checkArguments(startSum, requiredSum, percentage);
+        if (!argumentsAreValid(startSum, requiredSum, percentage)) {
+            return NOT_VALID_ARGUMENTS;
+        }
         double ratio = (percentage + HUNDRED) / HUNDRED;
         if (startSum >= requiredSum) {
             return 0;
@@ -175,7 +228,9 @@ public class BankPercentages {
     }
 
     public int findTermForLoopWithReturn(double startSum, double requiredSum, double percentage) {
-        checkArguments(startSum, requiredSum, percentage);
+        if (!argumentsAreValid(startSum, requiredSum, percentage)) {
+            return NOT_VALID_ARGUMENTS;
+        }
         double ratio = (percentage + HUNDRED) / HUNDRED;
         int years = 0;
         for (double currentSum = startSum; ; currentSum *= ratio) {
@@ -187,7 +242,9 @@ public class BankPercentages {
     }
 
     public int findTermForLoopWithSystemExit(double startSum, double requiredSum, double percentage) {
-        checkArguments(startSum, requiredSum, percentage);
+        if (!argumentsAreValid(startSum, requiredSum, percentage)) {
+            return NOT_VALID_ARGUMENTS;
+        }
         double ratio = (percentage + HUNDRED) / HUNDRED;
         int years = 0;
         for (double currentSum = startSum; ; currentSum *= ratio) {
@@ -198,9 +255,7 @@ public class BankPercentages {
         }
     }
 
-    private void checkArguments(double startSum, double requiredSum, double percentage) {
-        if (startSum <= 0 || requiredSum <= 0 || percentage <= 0) {
-            throw new IllegalArgumentException(ARGUMENTS_SHOULD_BE_POSITIVE);
-        }
+    private boolean argumentsAreValid(double startSum, double requiredSum, double percentage) {
+        return (startSum > 0 && requiredSum > 0 && percentage > 0);
     }
 }

@@ -18,50 +18,51 @@ public class NumberHandlerTest {
     @Test
     public void testGetDoublesFromStringArgumentsNormal01() throws Exception {
         String[] args = {"0.0", "2", "4", "6"};
-        double[] doublesActual = numberHandler.getDoublesFromStringArguments(args);
+        numberHandler.getNumbersFromStringArguments(args);
         double[] doublesExpected = {0, 2, 4, 6};
-        assertArrayEquals(doublesExpected, doublesActual, DELTA);
+        assertArrayEquals(doublesExpected, numberHandler.getDoubleNumbers(), DELTA);
     }
 
     @Test
     public void testGetDoublesFromStringArgumentsNormal02() throws Exception {
         String[] args = {"-1.25", "0", "1e-3", "2e5", "16.67F"};
-        double[] doublesActual = numberHandler.getDoublesFromStringArguments(args);
+        numberHandler.getNumbersFromStringArguments(args);
         double[] doublesExpected = {-1.25, 0, 0.001, 200_000, 16.67};
-        assertArrayEquals(doublesExpected, doublesActual, DELTA);
+        assertArrayEquals(doublesExpected, numberHandler.getDoubleNumbers(), DELTA);
     }
 
     @Test
     public void testGetDoublesFromStringArgumentsNormal03() throws Exception {
         String[] args = {"0", "2", "4", "6"};
-        double[] doublesActual = numberHandler.getDoublesFromStringArguments(args);
+        numberHandler.getNumbersFromStringArguments(args);
         double[] doublesExpected = {0, 2, 4, 6};
-        assertArrayEquals(doublesExpected, doublesActual, DELTA);
+        assertArrayEquals(doublesExpected, numberHandler.getDoubleNumbers(), DELTA);
     }
 
     @Test(expected = NumberFormatException.class)
     public void testGetDoublesFromStringArgumentsAbnormal01() throws Exception {
         String[] args = {"2", "4.5", "F", "0"};
-        numberHandler.getDoublesFromStringArguments(args);
+        numberHandler.getNumbersFromStringArguments(args);
     }
 
     @Test(expected = NumberFormatException.class)
     public void testGetDoublesFromStringArgumentsAbnormal02() throws Exception {
         String[] args = {"2", "4.5", " ", "0"};
-        numberHandler.getDoublesFromStringArguments(args);
+        numberHandler.getNumbersFromStringArguments(args);
     }
 
     @Test(expected = NumberFormatException.class)
     public void testGetDoublesFromStringArgumentsAbnormal03() throws Exception {
         String[] args = {"36,6", "-10", "1E-6"};
-        numberHandler.getDoublesFromStringArguments(args);
+        numberHandler.getNumbersFromStringArguments(args);
     }
 
     @Test
     public void testProcessNumbersNormal01() throws Exception {
         double[] doubleNumbers = {2.0, 4.0, 0.0, 6.0};
-        numberHandler.processNumbers(doubleNumbers);
-        assertEquals(4, numberHandler.getAmount());
+        numberHandler.setDoubleNumbers(doubleNumbers);
+        numberHandler.processNumbers();
+        assertEquals(4, numberHandler.getDoubleNumbers().length);
         assertEquals(0.0, numberHandler.getMinValue(), DELTA);
         assertEquals(6.0, numberHandler.getMaxValue(), DELTA);
         assertEquals(3.0, numberHandler.getAverageValue(), DELTA);
@@ -70,8 +71,9 @@ public class NumberHandlerTest {
     @Test
     public void testProcessNumbersNormal02() throws Exception {
         double[] doubleNumbers = {-2.0, 0.0, 4.0, 8.0, 10.0};
-        numberHandler.processNumbers(doubleNumbers);
-        assertEquals(5, numberHandler.getAmount());
+        numberHandler.setDoubleNumbers(doubleNumbers);
+        numberHandler.processNumbers();
+        assertEquals(5, numberHandler.getDoubleNumbers().length);
         assertEquals(-2.0, numberHandler.getMinValue(), DELTA);
         assertEquals(10.0, numberHandler.getMaxValue(), DELTA);
         assertEquals(4.0, numberHandler.getAverageValue(), DELTA);
@@ -80,8 +82,9 @@ public class NumberHandlerTest {
     @Test
     public void testProcessNumbersNormal03() throws Exception {
         double[] doubleNumbers = {5, 4, 3, 2, 1, 0};
-        numberHandler.processNumbers(doubleNumbers);
-        assertEquals(6, numberHandler.getAmount());
+        numberHandler.setDoubleNumbers(doubleNumbers);
+        numberHandler.processNumbers();
+        assertEquals(6, numberHandler.getDoubleNumbers().length);
         assertEquals(0.0, numberHandler.getMinValue(), DELTA);
         assertEquals(5.0, numberHandler.getMaxValue(), DELTA);
         assertEquals(2.5, numberHandler.getAverageValue(), DELTA);
@@ -90,8 +93,9 @@ public class NumberHandlerTest {
     @Test
     public void testProcessNumbersBoundary01() throws Exception {
         double[] doubleNumbers = {0, 0, 0};
-        numberHandler.processNumbers(doubleNumbers);
-        assertEquals(3, numberHandler.getAmount());
+        numberHandler.setDoubleNumbers(doubleNumbers);
+        numberHandler.processNumbers();
+        assertEquals(3, numberHandler.getDoubleNumbers().length);
         assertEquals(0.0, numberHandler.getMinValue(), DELTA);
         assertEquals(0.0, numberHandler.getMaxValue(), DELTA);
         assertEquals(0.0, numberHandler.getAverageValue(), DELTA);
@@ -100,8 +104,9 @@ public class NumberHandlerTest {
     @Test
     public void testProcessNumbersBoundary02() throws Exception {
         double[] doubleNumbers = {7};
-        numberHandler.processNumbers(doubleNumbers);
-        assertEquals(1, numberHandler.getAmount());
+        numberHandler.setDoubleNumbers(doubleNumbers);
+        numberHandler.processNumbers();
+        assertEquals(1, numberHandler.getDoubleNumbers().length);
         assertEquals(7.0, numberHandler.getMinValue(), DELTA);
         assertEquals(7.0, numberHandler.getMaxValue(), DELTA);
         assertEquals(7.0, numberHandler.getAverageValue(), DELTA);
@@ -110,12 +115,13 @@ public class NumberHandlerTest {
     @Test(expected = IllegalArgumentException.class)
     public void testProcessNumbersAbnormal01() throws Exception {
         double[] doubleNumbers = {};
-        numberHandler.processNumbers(doubleNumbers);
+        numberHandler.setDoubleNumbers(doubleNumbers);
+        numberHandler.processNumbers();
     }
 
     @Test
     public void testBuildAnswerOutput01() throws Exception {
-        numberHandler.setAmount(5);
+        numberHandler.setDoubleNumbers(new double[]{0, 0, 0, 0, 0});
         numberHandler.setMinValue(12);
         numberHandler.setMaxValue(220);
         numberHandler.setAverageValue(110);
@@ -127,7 +133,7 @@ public class NumberHandlerTest {
 
     @Test
     public void testBuildAnswerOutput02() throws Exception {
-        numberHandler.setAmount(4);
+        numberHandler.setDoubleNumbers(new double[]{0, 0, 0, 0});
         numberHandler.setMinValue(-1e-3);
         numberHandler.setMaxValue(2.5e4);
         numberHandler.setAverageValue(0);
