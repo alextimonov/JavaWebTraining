@@ -23,4 +23,23 @@ public class Lesson04 {
     private void val(Integer k) {
         System.out.println("K");
     }
+
+    static final void calc6() {}
+
+    private static void calc7() {}
+    protected static void calc8() {}
+    public static void calc9() {}
+
+    private final void calc10() {}
+    protected final void calc11() {}
+    public final void calc12() {}
+
+}
+
+abstract class Try {
+    // abstract final void calc1();
+    // abstract static void calc3();
+    // abstract private void calc2();
+    abstract protected void calc4();
+    abstract public void calc5();
 }
