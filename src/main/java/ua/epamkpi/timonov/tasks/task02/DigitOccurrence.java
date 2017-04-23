@@ -40,7 +40,7 @@ public class DigitOccurrence {
             }
             number /= RADIX;
         }
-        while (number > 0);
+        while (number != 0);
         return amount;
     }
 

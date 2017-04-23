@@ -10,6 +10,14 @@ public class Lesson04 {
 
         byte b = 7;
 
+        int sum = 10;
+        int count = 3;
+        double averageValue = (double) sum/count;
+        System.out.println(averageValue);
+
+        String str = "qwerty";
+        str.substring(2, 4);
+        int k = 0006;
     }
 
     private void run() {
