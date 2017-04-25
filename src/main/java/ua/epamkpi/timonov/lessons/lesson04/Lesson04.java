@@ -17,7 +17,14 @@ public class Lesson04 {
 
         String str = "qwerty";
         str.substring(2, 4);
+        str.concat("-aaa");
         int k = 0006;
+
+        Boolean b1 = new Boolean("true");
+        Boolean b2 = Boolean.TRUE;
+        System.out.println(b1 == b2);
+        System.out.println(b1.equals(b2));
+
     }
 
     private void run() {

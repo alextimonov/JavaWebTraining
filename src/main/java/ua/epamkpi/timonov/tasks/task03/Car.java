@@ -12,16 +12,6 @@ public class Car {
     public Car() {
     }
 
-    public Car(String mark) {
-        this.mark = mark;
-    }
-
-    public Car(String mark, String model, int year) {
-        this.mark = mark;
-        this.model = model;
-        this.year = year;
-    }
-
     public Car(String mark, String model, int year, double price) {
         this.mark = mark;
         this.model = model;

@@ -18,7 +18,7 @@ public class BankPercentages {
      * starts one of possible method to find number of years, prints the answer
      */
     private void run() {
-        int years = findTermForLoopWithSystemExit(1000, 2000, 5);
+        int years = findTermWhileDoLoop(1000, 2000, 5);
         if (years >= 0) {
             System.out.println(REQUIRED_NUMBER_OF_YEARS + years);
         } else {
