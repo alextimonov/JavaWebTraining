@@ -40,18 +40,6 @@ public class Piano {
         }
     }
 
-    /**
-     * plays given melody
-     * @param melody        melody to be played
-     */
-    public void play(Melody melody) {
-        for (Key key : melody.getKeySequence()) {
-            if (keys.contains(key)) {
-                key.press();
-            }
-        }
-    }
-
     @Override
     public String toString() {
         return "Piano {" + "model=" + model + ", year=" + issueYear + ", \n" +
@@ -84,6 +72,8 @@ public class Piano {
         result = 31 * result + (keys != null ? keys.hashCode() : 0);
         return result;
     }
+
+    /* ========== Getters & setters =========== */
 
     public List<Key> getKeys() {
         return keys;

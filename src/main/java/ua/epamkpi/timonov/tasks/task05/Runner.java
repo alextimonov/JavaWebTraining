@@ -48,10 +48,12 @@ public class Runner {
 
         System.out.println("Hashcode of " + pianoCasio + ": " + pianoCasio.hashCode());
         System.out.println("Hashcode of " + pianoRonisch + ": " + pianoRonisch.hashCode());
+        System.out.println("Hashcode of " + anotherCasio + ": " + anotherCasio.hashCode());
 
         System.out.println();
 
         System.out.println(pianoCasio + " equals\n" + pianoRonisch + ": " + pianoCasio.equals(pianoRonisch));
+        System.out.println();
         System.out.println(pianoCasio + " equals\n" + anotherCasio + ": " + pianoCasio.equals(anotherCasio));
     }
 }
