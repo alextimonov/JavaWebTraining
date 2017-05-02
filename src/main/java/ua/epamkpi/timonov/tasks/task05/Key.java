@@ -11,30 +11,45 @@ public class Key {
     /* musical note */
     private Note note;
 
+    /* true if key is adjusted */
+    private boolean isAdjusted;
+
+    /* true if key is pressed */
+    private boolean isPressed;
+
     public Key() {
+    }
+
+    public Key(Octave octave, Note note, boolean isAdjusted) {
+        this.octave = octave;
+        this.note = note;
+        this.isAdjusted = isAdjusted;
+    }
+
+    /**
+     * makes the key pressed
+     */
+    public void press() {
+        isPressed = true;
+        // delay if necessary
+    }
+
+    /**
+     * releases the key
+     */
+    public void release() {
+        isPressed = false;
     }
 
     /**
      * adjusts the key and prints message
      */
     public void adjust() {
-        // some code to adjust the key
-        String message = toString() + " is adjusted";
-        System.out.println(message);
-    }
-
-    /**
-     * makes the pressed and
-     */
-    public void press() {
-        // some code to press the key
-        String message = toString() + " is pressed";
-        System.out.println(message);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("Key {octave=%-14s, note=%-9s (%2s%-2d)}", octave, note, note.getSign(), octave.getValue());
+        press();
+        release();
+        if (!isAdjusted) {
+            setAdjusted(true);
+        }
     }
 
     @Override
@@ -49,18 +64,24 @@ public class Key {
             return false;
         }
         Key thatKey = (Key) object;
-        if (octave.ordinal() != thatKey.octave.ordinal()) {
+        if (octave != thatKey.octave) {
             return false;
         }
-        return note.ordinal() == thatKey.note.ordinal();
+        return note == thatKey.note;
     }
 
     @Override
     public int hashCode() {
-        int multiplier = Note.values().length + 1;           // there are 12 regular notes, multiplier should be 13
+        int multiplier = Note.values().length + 1;     // there are 12 regular notes, multiplier should be 13
         int result = (octave != null ? octave.ordinal() : -1);
         result = multiplier * result + (note != null ? note.ordinal() : -1);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Key {%-14s %-9s (%2s%-2d), is pressed=%-5b, is adjusted=%-5b}",
+                octave, note, note.getSign(), octave.getValue(), isPressed, isAdjusted);
     }
 
     /* =========== Getters & setters =========== */
@@ -79,5 +100,21 @@ public class Key {
 
     public void setNote(Note note) {
         this.note = note;
+    }
+
+    public boolean isAdjusted() {
+        return isAdjusted;
+    }
+
+    public void setAdjusted(boolean adjusted) {
+        isAdjusted = adjusted;
+    }
+
+    public boolean isPressed() {
+        return isPressed;
+    }
+
+    public void setPressed(boolean pressed) {
+        isPressed = pressed;
     }
 }

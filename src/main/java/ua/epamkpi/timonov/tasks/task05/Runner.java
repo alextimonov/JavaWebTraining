@@ -7,7 +7,7 @@ public class Runner {
 
     private void run() {
         Key keyCMinus1 = KeyFactory.create(Octave.SUB_SUB_CONTRA, Note.DO);
-        Key keyD1 = KeyFactory.create(Octave.CONTRA, Note.RE);
+        Key keyD1 = KeyFactory.create(Octave.CONTRA, Note.RE, false);
         Key keyB2 = KeyFactory.create(Octave.GREAT, Note.SI);
         Key keyFSharp4 = KeyFactory.create(Octave.ONE_LINED, Note.FA_SHARP);
 
@@ -15,10 +15,21 @@ public class Runner {
         anotherB2.setOctave(Octave.GREAT);
         anotherB2.setNote(Note.SI);
 
-        keyD1.adjust();
+        System.out.println("Before pressing key: " + keyD1);
         keyD1.press();
-        keyFSharp4.adjust();
-        keyFSharp4.press();
+        System.out.println("After pressing key:  " + keyD1);
+
+        System.out.println();
+
+        System.out.println("Before releasing key: " + keyD1);
+        keyD1.release();
+        System.out.println("After releasing key:  " + keyD1);
+
+        System.out.println();
+
+        System.out.println("Before adjusting key: " + keyD1);
+        keyD1.adjust();
+        System.out.println("After adjusting key:  " + keyD1);
 
         System.out.println();
 
@@ -29,9 +40,9 @@ public class Runner {
 
         System.out.println();
 
-        System.out.println(keyD1 + " equals " + keyB2 + ": " + keyD1.equals(keyB2));
-        System.out.println(keyB2 + " equals " + keyD1 + ": " + keyB2.equals(keyD1));
-        System.out.println(keyB2 + " equals " + keyB2 + ": " + keyB2.equals(anotherB2));
+        System.out.println("Is " + keyD1 + "  equal\nto " + keyB2 + ": " + keyD1.equals(keyB2));
+        System.out.println("Is " + keyB2 + "  equal\nto " + keyD1 + ": " + keyB2.equals(keyD1));
+        System.out.println("Is " + keyB2 + "  equal\nto " + keyB2 + ": " + keyB2.equals(anotherB2));
 
         System.out.println();
 
@@ -39,11 +50,23 @@ public class Runner {
         Piano pianoRonisch = PianoFactory.create("Ronisch", 2000);
         Piano anotherCasio = PianoFactory.create("Casio", 2010);
 
-        System.out.println("Adjusting piano:");
-        pianoCasio.adjust();
+        Key startKey = KeyFactory.create(Octave.SMALL, Note.LA);
+        Key endKey = KeyFactory.create(Octave.TWO_LINED, Note.RE);
+        Piano pianoYamaha = PianoFactory.create("Yamaha", 2015, startKey, endKey);
+        pianoYamaha.getKeys().get(0).setAdjusted(false);
+        pianoYamaha.getKeys().get(4).setAdjusted(false);
+        pianoYamaha.getKeys().get(8).setAdjusted(false);
+        pianoYamaha.getKeys().get(12).setAdjusted(false);
+        pianoYamaha.getKeys().get(16).setAdjusted(false);
+
+        System.out.println("Adjusting piano Yamaha:");
+        pianoYamaha.adjust();
+
         System.out.println();
-        System.out.println("Playing piano:");
+
+        System.out.println("Playing piano Casio:");
         pianoCasio.playRandomKeys(10);
+
         System.out.println();
 
         System.out.println("Hashcode of " + pianoCasio + ": " + pianoCasio.hashCode());
@@ -52,8 +75,8 @@ public class Runner {
 
         System.out.println();
 
-        System.out.println(pianoCasio + " equals\n" + pianoRonisch + ": " + pianoCasio.equals(pianoRonisch));
+        System.out.println("Is " + pianoCasio + "  equal\nto " + pianoRonisch + ": " + pianoCasio.equals(pianoRonisch));
         System.out.println();
-        System.out.println(pianoCasio + " equals\n" + anotherCasio + ": " + pianoCasio.equals(anotherCasio));
+        System.out.println("Is " + pianoCasio + "  equal\nto " + anotherCasio + ": " + pianoCasio.equals(anotherCasio));
     }
 }

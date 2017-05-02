@@ -24,8 +24,11 @@ public class Piano {
      */
     public void adjust() {
         for (Key key : keys) {
+            System.out.println(key);
             key.adjust();
+            System.out.println(key);
         }
+
     }
 
     /**
@@ -37,13 +40,15 @@ public class Piano {
         for (int i = 0; i < keysNumber; i++) {
             int index = (int) (random.nextDouble() * keys.size());
             keys.get(index).press();
+            System.out.println(keys.get(index));
+            keys.get(index).release();
         }
     }
 
     @Override
     public String toString() {
-        return "Piano {" + "model=" + model + ", year=" + issueYear + ", \n" +
-                "keys from " + keys.get(0) + " to " + keys.get(keys.size() - 1) + "}";
+        return "Piano {" + "model=" + model + ", year=" + issueYear + ", keys\n   from " + keys.get(0)
+                + "\n     to " + keys.get(keys.size() - 1) + "}";
     }
 
     @Override
