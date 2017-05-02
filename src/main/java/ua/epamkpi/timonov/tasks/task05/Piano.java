@@ -46,12 +46,6 @@ public class Piano {
     }
 
     @Override
-    public String toString() {
-        return "Piano {" + "model=" + model + ", year=" + issueYear + ", keys\n   from " + keys.get(0)
-                + "\n     to " + keys.get(keys.size() - 1) + "}";
-    }
-
-    @Override
     public boolean equals(Object object) {
         if (this == object) {
             return true;
@@ -76,6 +70,12 @@ public class Piano {
         result = 31 * result + issueYear;
         result = 31 * result + (keys != null ? keys.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Piano {" + "model=" + model + ", year=" + issueYear + ", keys\n   from " + keys.get(0)
+                + "\n     to " + keys.get(keys.size() - 1) + "}";
     }
 
     /* ========== Getters & setters =========== */
