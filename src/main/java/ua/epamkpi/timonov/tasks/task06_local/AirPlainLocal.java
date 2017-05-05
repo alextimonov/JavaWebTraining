@@ -1,4 +1,4 @@
-package ua.epamkpi.timonov.tasks.task063local;
+package ua.epamkpi.timonov.tasks.task06_local;
 
 interface IEngine {
     String startEngine(int auto);

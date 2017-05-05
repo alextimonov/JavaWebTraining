@@ -1,4 +1,4 @@
-package ua.epamkpi.timonov.tasks.task064;
+package ua.epamkpi.timonov.tasks.task06_anonymous;
 
 public class Runner {
     public static void main(String[] args) {

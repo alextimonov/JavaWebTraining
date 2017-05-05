@@ -1,4 +1,4 @@
-package ua.epamkpi.timonov.tasks.task063local;
+package ua.epamkpi.timonov.tasks.task06_local;
 
 public class Runner {
     public static void main(String[] args) {

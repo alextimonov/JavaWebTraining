@@ -1,4 +1,4 @@
-package ua.epamkpi.timonov.tasks.task062nested;
+package ua.epamkpi.timonov.tasks.task06_nested;
 
 public class Runner {
     public static void main(String[] args) {

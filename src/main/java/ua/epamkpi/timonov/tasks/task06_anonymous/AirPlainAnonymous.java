@@ -1,4 +1,4 @@
-package ua.epamkpi.timonov.tasks.task064;
+package ua.epamkpi.timonov.tasks.task06_anonymous;
 
 interface IEngine {
     String startEngine();

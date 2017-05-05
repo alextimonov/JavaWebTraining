@@ -1,4 +1,4 @@
-package ua.epamkpi.timonov.tasks.task061inner;
+package ua.epamkpi.timonov.tasks.task06_inner;
 
 public class Runner {
     public static void main(String[] args) {
