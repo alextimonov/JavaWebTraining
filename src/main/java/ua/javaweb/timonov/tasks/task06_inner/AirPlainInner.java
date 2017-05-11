@@ -7,6 +7,10 @@ interface IEngine {
 
 public class AirPlainInner {
 
+    static {
+        // AirPlainEngine airPlainEngine = new AirPlainEngine();
+    }
+
     public static final String AIR_PLAIN_ENGINE_STARTED = "Air plain engine started. ";
     public static final String AIR_PLAIN_ENGINE_STOPPED = "Air plain engine stopped. ";
     public static final String ENGINE_STARTED = "Engine started. ";

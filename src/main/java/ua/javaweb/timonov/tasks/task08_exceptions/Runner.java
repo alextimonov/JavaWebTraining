@@ -46,6 +46,7 @@ public class Runner {
             System.out.printf("Available memory before OutOfMemoryError: %10d B\n", omeModulation.getAvailableMemory());
             startTime = System.nanoTime();
 //            omeModulation.stringConcat(LOREM_IPSUM);
+//            omeModulation.listInMemory();
             omeModulation.arraysInMemory();
         } catch (OutOfMemoryError e) {
             double timeElapsed = (System.nanoTime() - startTime) / BILLION;

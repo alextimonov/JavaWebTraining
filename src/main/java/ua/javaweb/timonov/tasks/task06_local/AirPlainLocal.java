@@ -36,7 +36,8 @@ public class AirPlainLocal {
                 }
 
                 String autoStart() {
-                    return new AirPlainEngine().startEngine(MANUAL);   // invoke from local to external
+                    getReference();                                     // invoke from local to external
+                    return new AirPlainEngine().startEngine(MANUAL);    // invoke from local to external
                 }
             }
             if (auto == AUTO) {

@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Represents implementation for some methods for String
+ * Represents implementation for some methods for string
  */
 public class StringImpl {
 
@@ -52,11 +52,10 @@ public class StringImpl {
         if (thisLength != stringToCompare.length()) {
             return false;
         }
-
-        String thisWord = toLowerCase();
-        String thatWord = stringToCompare.toLowerCase();
+        String ownWord = toLowerCase();
+        String wordToCompare = stringToCompare.toLowerCase();
         for (int i = 0; i < thisLength; i++) {
-            if (thisWord.charAt(i) != thatWord.charAt(i)) {
+            if (ownWord.charAt(i) != wordToCompare.charAt(i)) {
                 return false;
             }
         }
@@ -154,7 +153,7 @@ public class StringImpl {
             String word = stringTokenizer.nextToken();
             if (map.containsKey(word)) {
                 int count = map.get(word);
-                map.put(word, ++count);
+                map.replace(word, count, ++count);
             } else {
                 map.put(word, 1);
             }

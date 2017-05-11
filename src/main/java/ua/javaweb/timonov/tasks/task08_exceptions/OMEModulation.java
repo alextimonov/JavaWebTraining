@@ -1,5 +1,8 @@
 package ua.javaweb.timonov.tasks.task08_exceptions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class OMEModulation {
 
     public static final int ARRAY_SIZE = 10_000;
@@ -12,6 +15,13 @@ public class OMEModulation {
         int[][] array = new int[ARRAY_SIZE][];
         for (int i = 0; i < ARRAY_SIZE; i++) {
             array[i] = new int[25_000];
+        }
+    }
+
+    public void listInMemory() {
+        List<Integer> integers = new ArrayList<>();
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            integers.add(i);
         }
     }
 
