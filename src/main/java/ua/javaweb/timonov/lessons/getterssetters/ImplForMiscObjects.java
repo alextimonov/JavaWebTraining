@@ -44,13 +44,18 @@ public class ImplForMiscObjects {
 
     public void setBirthDate(Date date) {
         this.birthDate = (Date) date.clone();
+//        this.birthDate = new Date(date.getTime());
     }
 
     public Date getBirthDate() {
         return (Date) this.birthDate.clone();
+//        return new Date(this.birthDate.getTime());
     }
 
 //    The clone() method returns an Object, so we must cast it to Date type.
+
+//    J.Bloah: Do not use method clone to make backup copies of parameters with type that allows to create
+//    subclasses to non-reliable partners.
 
 
     /* =============== YOUR OWN TYPE ================== */
