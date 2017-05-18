@@ -23,6 +23,8 @@ public class Lesson11 {
         a.staticGo();
         b.staticGo();
 
+
+
         }
 
 interface K {}
